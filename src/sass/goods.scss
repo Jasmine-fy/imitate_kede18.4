@@ -1,0 +1,204 @@
+// 引入变量
+@import 'var';
+// 主要内容样式
+#k_main{
+    .container{}
+    .top{
+        width: 372px;
+        height: 22px;
+        background:url("../img/goods_top.png");
+        margin:20px 0;
+    }
+    .center{
+        height: 635px;
+        position:relative;
+        .left{
+            margin-right:40px;
+            position:relative;
+            .small_box{
+                width: 400px;
+                height: 400px;
+                border:1px solid #ccc;
+                position:relative;
+                img{width: 400px;height:400px;}
+                span{
+                    display:none;
+                    width: 160px;
+                    height: 160px;
+                    background:url("../img/mask.png") repeat scroll 0 0 transparent;
+                    cursor:move;
+                    position:absolute;
+                    left:0;
+                    top:0;
+                    z-index:100;
+                }
+            }
+            .more{
+                height: 70px;
+                margin:20px 0 14px;
+                position:relative;
+                i{
+                    width: 8px;
+                    height: 15px;
+                    margin:27px 4px;
+                    left:0;
+                    top:0;
+                    background-position:-180px -742px;
+                    cursor:pointer;
+                }
+                i.next{background-position:-189px -742px;left:386px;}
+                .wrapper{
+                    width: 380px;
+                    margin-left:15px;
+                    li{
+                        border:1px solid #dedede;
+                        padding:1px;
+                        float: $fl;
+                        margin:0 2px;
+                        img{width: 66px;height: 66px;}
+                    }
+                    li.item-cur{padding:0;border:2px solid #93c525;}
+                }
+            }
+            .share{
+                width: 340px;
+                height: 22px;
+                background:url("../img/goods2.png");
+            }
+            .big_box{
+                display:none;
+                width: 400px;
+                height: 400px;
+                border:1px solid #ccc;
+                position:absolute;
+                overflow:hidden;
+                left:412px;
+                top:0px;
+                z-index:99;
+                // img{width: 800px;height: 800px;}
+            }
+        }
+        .right{
+            .r_top{
+                height: 44px;
+                border-bottom:1px dotted #ccc;
+                margin-bottom:5px;
+                padding-left:4px;
+                p.name{font-size:14px;}
+                p:last-of-type{color:#f60;line-height:24px;}
+            }
+            .message{
+                width: 622px;
+                height: 222px;
+                border-bottom:1px dotted #ccc;
+                p{color:#666;text-indent:10px;}
+                b{color:#f60;font-size:20px;}
+                .msg_sale{width: 430px;height: 178px;background:url("../img/goods_sale.png");}
+            }  
+            .selectColor{width: 430px;height: 83px;background:url("../img/goods2_select_color.png");}
+            .selectAttr{
+                color:#666;
+                span:first-of-type{padding-left:10px;}
+                .you,.zuo{
+                    margin-left:30px;
+                    li{
+                        float: $fl;
+                        line-height:24px;
+                    }
+                    li:first-of-type{
+                        display:inline-block;
+                        width: 55px;
+                        height: 24px;
+                        color:#fff;
+                        text-align:center;
+                        background-color:#90c31f;
+                        border-radius:3px;
+                    }
+                    li:nth-of-type(2),li:nth-of-type(4){width: 50px;text-align:center;}
+                    li.choice{
+                        width: 70px;
+                        border:1px solid #ccc;
+                        position:relative;
+                        text-indent:7px;
+                        i{
+                            width: 22px;
+                            height: 22px;
+                            background-position:-124px -911px;
+                            right:0;
+                            top:0;
+                        }
+                    }
+                    li.amount{
+                        position:relative;
+                        input{width: 24px;height: 22px;border:1px solid #ccc;vertical-align:top;text-align:center;}
+                        .plus,.minus{
+                            display:inline-block;
+                            width: 20px;
+                            height: 22px;
+                            line-height:22px;
+                            font-size:16px;
+                            text-align:center;
+                            background-color:#eee;
+                            border:1px solid #ccc;
+                            padding-left:0;
+                        }
+                        .plus:hover,.minus:hover{cursor:pointer;}
+                    }
+                }
+                .zuo{margin:10px 0 0 89px;}
+            }
+            button{
+                width: 150px;
+                height: 32px;
+                border-radius:3px;
+                border:1px solid #f60;
+                margin:10px 0 5px;
+            }
+            button:hover{cursor:pointer;}
+            button.btnBuy{
+                background-color:#f60;
+                color:#fff;
+                margin-left:77px;
+            }
+            button.btnAdd{
+                background-color:#fff;
+            }
+            .promise{
+                span{
+                    margin-left:25px;
+                    position:relative;
+                    line-height:40px;
+                    i{
+                        width: 20px;
+                        height: 20px;
+                        background-position:-105px -940px;
+                        left:-22px;
+                        top:-4px;
+                    }
+                }
+                span:first-of-type i{
+                    background-position:-63px -940px;
+                }
+                span:last-of-type i{
+                    background-position:-126px -940px;
+                }
+            }
+        }
+        .qr_code{
+            width: 115px;
+            height: 115px;
+            background:url("../img/qrcode.jpg");
+            position:absolute;
+            right:0;
+            top:0;
+            p{
+                margin:120px 0 0 10px;
+            }
+        }
+    }
+    .bottom{
+        width: 100%;
+        height: 1586px;
+        background:url("../img/goods.png");
+    }
+}

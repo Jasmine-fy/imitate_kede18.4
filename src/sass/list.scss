@@ -1,0 +1,180 @@
+// 引入变量
+@import 'var';
+// 主要内容样式
+#k_main{
+    .container{
+        
+    }
+    .top{
+        width: 240px;
+        height: 22px;
+        margin:16px 0;
+        background:url("../img/list_top.png");
+    }
+    .left{
+        width: 210px;
+        height: 2610px;
+        background:url("../img/list_left.png");
+        float: $fl;
+        margin-right:20px;
+    }
+    .right{
+        width: 960px;
+        float: $fl;
+        .recommend{
+            height: 142px;
+            background:url("../img/list_right1.png");
+        }
+        .selected{
+            height: 60px;
+            line-height:60px;
+            text-indent:10px;
+        }
+        .pinpai{
+            height: 142px;
+            background:url("../img/list_right2.png");
+            margin-bottom:20px;
+        }
+        .product{
+            .order{
+                height: 26px;
+                background-color:#F5F5F5;
+                padding:4px 0;
+                li{
+                    width: 50px;
+                    border:1px solid #ccc;
+                    border-left:0 none;
+                    float: $fl;
+                    background-color:#fff;
+                    text-align:center;
+                    line-height:24px;
+                    position:relative;
+                    i{
+                        width: 9px;
+                        height: 10px;
+                        background-position:0 -917px;
+                        right:3px;
+                        top:7px;
+                    }
+                }
+                li:first-of-type{width: 44px;border-left:1px solid #ccc;margin-left:4px;}
+                li:last-of-type{
+                    width: 100px;
+                    float: $fr;
+                    border:0 none;
+                    background-color:#F5F5F5;
+                    span{
+                        display:inline-block;
+                        width: 20px;
+                        height: 18px;
+                        text-align:center;
+                        border:1px solid #e5e5e5;
+                        background-color:#fff;
+                        font-family:"宋体";
+                        line-height:18px;
+                        font-weight:bold;
+                        margin-left:3px;
+                    }
+                    span:hover{cursor:pointer;background-color:#f1edec;color:#f60;}
+                }
+                li:nth-of-type(-n+3):hover{color:#f60;background-color:#f1edec;cursor:pointer;}
+            }
+            .goods{
+                li:nth-of-type(4n){margin-right:0;}
+                li:hover{box-shadow:1px 1px 10px 3px #ddd;}
+                li{
+                    width: 218px;
+                    height: 348px;
+                    border:1px solid #ccc;
+                    float: $fl;
+                    margin:20px 20px 0 4px;
+                    transition:all 0.3s;
+                    img{width: 218px;height: 218px;}
+                    h2.price{
+                        font-size:24px;
+                        color:#f60;
+                        text-indent:6px;
+                    }
+                    h3.name{
+                        display:inline-block;
+                        height: 36px;
+                        text-indent:6px;
+                        margin:4px 1px 0 3px;
+                        font-size:14px;
+                    }
+                    h3.name:hover{color:#f60;cursor:pointer;}
+                    .sale{color:#666;text-align:center;line-height:26px;}
+                    .join{
+                        border-top:1px solid #ccc;
+                        padding:5px;
+                        span{
+                            display:inline-block;
+                            height: 20px;
+                            line-height:20px;
+                            border-radius:2px;
+                            border:1px solid #f60;
+                            position:relative;
+                            text-indent:33px;
+                            cursor:pointer;
+                            i{
+                                width: 16px;
+                                height: 16px;
+                                left:8px;
+                                top:2px;
+                            }
+                        }
+                        .cart{
+                            width: 108px;
+                            background-color:#f60;
+                            color:#fff;
+                            float: $fl;
+                            i{background-position:-2px -940px;}
+                        }
+                        .collect{
+                            width: 72px;
+                            float: $fr;
+                            color:#000;
+                            i{background-position:-2px -956px;}
+                        }
+                    }
+                }
+            }
+            .page{
+                float: $fl;
+                margin:30px 0;
+                ul.items{
+                    margin-left:130px;
+                    li{height: 35px;float: $fl;line-height:35px;text-align:center;cursor:pointer;}
+                    li.prev{
+                        width: 70px;
+                        border:1px solid #ccc;
+                        color:#999;
+                    }
+                    li.yema{
+                        margin:0 8px;
+                        ul.yema_page{
+                            li{
+                                width: 35px;
+                                border:1px solid #ccc;
+                                border-left:0 none;
+                            }
+                            li:first-of-type{border-left:1px solid #ccc;}
+                            li.active{background-color:#e3e3e3;}
+                        }
+                    }
+                    li.next{
+                        width: 70px;
+                        border:1px solid #ccc;
+                        color:#999;
+                    }
+                    li.prev:hover,li.next:hover{color:#f60;}
+                }
+                .forms{
+                    width: 200px;
+                    height: 35px;
+                    background:url("../img/list_page.png");
+                }
+            }
+        }
+    }
+}

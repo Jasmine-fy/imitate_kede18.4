@@ -1,0 +1,248 @@
+@charset "UTF-8";
+#k_main .top {
+  width: 240px;
+  height: 22px;
+  margin: 16px 0;
+  background: url("../img/list_top.png");
+}
+
+#k_main .left {
+  width: 210px;
+  height: 2610px;
+  background: url("../img/list_left.png");
+  float: left;
+  margin-right: 20px;
+}
+
+#k_main .right {
+  width: 960px;
+  float: left;
+}
+
+#k_main .right .recommend {
+  height: 142px;
+  background: url("../img/list_right1.png");
+}
+
+#k_main .right .selected {
+  height: 60px;
+  line-height: 60px;
+  text-indent: 10px;
+}
+
+#k_main .right .pinpai {
+  height: 142px;
+  background: url("../img/list_right2.png");
+  margin-bottom: 20px;
+}
+
+#k_main .right .product .order {
+  height: 26px;
+  background-color: #F5F5F5;
+  padding: 4px 0;
+}
+
+#k_main .right .product .order li {
+  width: 50px;
+  border: 1px solid #ccc;
+  border-left: 0 none;
+  float: left;
+  background-color: #fff;
+  text-align: center;
+  line-height: 24px;
+  position: relative;
+}
+
+#k_main .right .product .order li i {
+  width: 9px;
+  height: 10px;
+  background-position: 0 -917px;
+  right: 3px;
+  top: 7px;
+}
+
+#k_main .right .product .order li:first-of-type {
+  width: 44px;
+  border-left: 1px solid #ccc;
+  margin-left: 4px;
+}
+
+#k_main .right .product .order li:last-of-type {
+  width: 100px;
+  float: right;
+  border: 0 none;
+  background-color: #F5F5F5;
+}
+
+#k_main .right .product .order li:last-of-type span {
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+  text-align: center;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  font-family: "宋体";
+  line-height: 18px;
+  font-weight: bold;
+  margin-left: 3px;
+}
+
+#k_main .right .product .order li:last-of-type span:hover {
+  cursor: pointer;
+  background-color: #f1edec;
+  color: #f60;
+}
+
+#k_main .right .product .order li:nth-of-type(-n+3):hover {
+  color: #f60;
+  background-color: #f1edec;
+  cursor: pointer;
+}
+
+#k_main .right .product .goods li:nth-of-type(4n) {
+  margin-right: 0;
+}
+
+#k_main .right .product .goods li:hover {
+  box-shadow: 1px 1px 10px 3px #ddd;
+}
+
+#k_main .right .product .goods li {
+  width: 218px;
+  height: 348px;
+  border: 1px solid #ccc;
+  float: left;
+  margin: 20px 20px 0 4px;
+  transition: all 0.3s;
+}
+
+#k_main .right .product .goods li img {
+  width: 218px;
+  height: 218px;
+}
+
+#k_main .right .product .goods li h2.price {
+  font-size: 24px;
+  color: #f60;
+  text-indent: 6px;
+}
+
+#k_main .right .product .goods li h3.name {
+  display: inline-block;
+  height: 36px;
+  text-indent: 6px;
+  margin: 4px 1px 0 3px;
+  font-size: 14px;
+}
+
+#k_main .right .product .goods li h3.name:hover {
+  color: #f60;
+  cursor: pointer;
+}
+
+#k_main .right .product .goods li .sale {
+  color: #666;
+  text-align: center;
+  line-height: 26px;
+}
+
+#k_main .right .product .goods li .join {
+  border-top: 1px solid #ccc;
+  padding: 5px;
+}
+
+#k_main .right .product .goods li .join span {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 2px;
+  border: 1px solid #f60;
+  position: relative;
+  text-indent: 33px;
+  cursor: pointer;
+}
+
+#k_main .right .product .goods li .join span i {
+  width: 16px;
+  height: 16px;
+  left: 8px;
+  top: 2px;
+}
+
+#k_main .right .product .goods li .join .cart {
+  width: 108px;
+  background-color: #f60;
+  color: #fff;
+  float: left;
+}
+
+#k_main .right .product .goods li .join .cart i {
+  background-position: -2px -940px;
+}
+
+#k_main .right .product .goods li .join .collect {
+  width: 72px;
+  float: right;
+  color: #000;
+}
+
+#k_main .right .product .goods li .join .collect i {
+  background-position: -2px -956px;
+}
+
+#k_main .right .product .page {
+  float: left;
+  margin: 30px 0;
+}
+
+#k_main .right .product .page ul.items {
+  margin-left: 130px;
+}
+
+#k_main .right .product .page ul.items li {
+  height: 35px;
+  float: left;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#k_main .right .product .page ul.items li.prev {
+  width: 70px;
+  border: 1px solid #ccc;
+  color: #999;
+}
+
+#k_main .right .product .page ul.items li.yema {
+  margin: 0 8px;
+}
+
+#k_main .right .product .page ul.items li.yema ul.yema_page li {
+  width: 35px;
+  border: 1px solid #ccc;
+  border-left: 0 none;
+}
+
+#k_main .right .product .page ul.items li.yema ul.yema_page li:first-of-type {
+  border-left: 1px solid #ccc;
+}
+
+#k_main .right .product .page ul.items li.yema ul.yema_page li.active {
+  background-color: #e3e3e3;
+}
+
+#k_main .right .product .page ul.items li.next {
+  width: 70px;
+  border: 1px solid #ccc;
+  color: #999;
+}
+
+#k_main .right .product .page ul.items li.prev:hover, #k_main .right .product .page ul.items li.next:hover {
+  color: #f60;
+}
+
+#k_main .right .product .page .forms {
+  width: 200px;
+  height: 35px;
+  background: url("../img/list_page.png");
+}
