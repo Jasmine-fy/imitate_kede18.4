@@ -341,6 +341,7 @@
                 border-right:1px solid #ccc;
                 border-bottom:1px solid #ccc;
                 position:relative;
+                float: $fl;
                 a{display:block;width: 100%;position:absolute;top:190px;left:50%;transform:translate(-50%,0);text-align:center;color:#000;}
                 p{position:absolute;top:210px;left:50%;transform:translate(-50%,0);color:#FE6809;font-size:14px;}
                 img{margin-left:2px;transition:all 0.2s;}
@@ -408,6 +409,7 @@
                 border-right:1px solid #ccc;
                 border-bottom:1px solid #ccc;
                 position:relative;
+                float: $fl;
                 a{display:block;width: 100%;position:absolute;top:210px;left:50%;transform:translate(-50%,0);text-align:center;color:#000;}
                 p{position:absolute;top:190px;left:50%;transform:translate(-50%,0);color:#FE6809;font-size:14px;}
                 span{position:absolute;top:230px;color:#FE6809;left:50%;transform:translate(-50%,0);}

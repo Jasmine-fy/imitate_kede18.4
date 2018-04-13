@@ -48,9 +48,9 @@
             float: $fl;
         }
         li:first-of-type{width: 420px;margin-left:20px;}
-        li:nth-of-type(2){width: 120px;margin-left:120px;}
-        li:nth-of-type(3){width: 110px;}
-        li:nth-of-type(4){width: 110px;}
+        li:nth-of-type(2){width: 120px;margin-left:65px;}
+        li:nth-of-type(3){width: 130px;}
+        li:nth-of-type(4){width: 130px;}
         li:nth-of-type(5){width: 88px;}
     }
     p.ziying{height:60px;line-height:60px;font-size:16px;text-indent:8px;}
@@ -68,6 +68,7 @@
             height: 80px;
             border:1px solid #ccc;
             border-top:0 none;
+            color:#666;
             img{
                 width: 60px;
                 float: $fl;
@@ -80,11 +81,12 @@
                 line-height:58px;
                 text-indent:10px;
                 margin-top:10px;
+                color:#666;
             }
             .du{line-height:80px;margin-right:20px;}
             .amount{
                 position:relative;
-                margin-top:20px;
+                margin:28px 55px 0 10px;
                 input{width: 24px;height: 22px;border:1px solid #ccc;vertical-align:top;text-align:center;}
                 .plus,.minus{
                     display:inline-block;
@@ -99,24 +101,15 @@
                 }
                 .plus:hover,.minus:hover{cursor:pointer;}
             }
-            .qty{
-                input{
-                    border:1px solid #ccc;
-                    width: 50px;
-                    height: 18px;
-                    color:#000;
-                    text-align:center;
-                    margin-top:20px;
-                }
-            }
-            .unit{line-height:80px;margin-right:20px;}
-            .total{color:#f60;}
+            .unit{line-height:80px;margin-right:85px;}
+            .total{line-height:80px;color:#f60;font-size:14px;}
             .change{
                 width: 100px;
                 height: 65px;
                 padding-top:15px;
                 text-align:left;
-                a{display:block;line-height:20px;}
+                a{display:block;line-height:20px;color:#666;}
+                a:hover{color:#f60;}
             }
         }
     }

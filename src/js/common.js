@@ -144,71 +144,154 @@ function bind(ele, type, handler, isCapture) {
 	* 查
 	* 改
  */
+// var Cookie = {
+// 	/**
+//   * [获取cookie]
+//   * @param  {String} key [cookie名]
+//   * @return {String}      [返回cookie自]
+//   */
+// 	get: function get(key) {
+// 		// 先获取所有cookie
+// 		var cookies = document.cookie;
+// 		if (cookies.length === 0) {
+// 			return '';
+// 		}
+
+// 		// 拆分每一个cookie
+// 		cookies = cookies.split('; ');
+
+// 		for (var i = 0; i < cookies.length; i++) {
+// 			// 拆分key,value
+// 			var arr = cookies[i].split('=');
+
+// 			if (arr[0] === key) {
+// 				return arr[1];
+// 			}
+// 		}
+// 	},
+
+// 	*
+//   * [设置/修改cookie]
+//   * @param {String} key   [cookie名]
+//   * @param {String} value [cookie值]
+//   * @param {[Date]} date  [有效期，必须为Date类型]
+//   * @param {[String]} path  [cookie保存路径]
+  
+// 	set: function set(key, value, date, path) {
+// 		var str = key + '=' + value;
+
+// 		// 有效期
+// 		if (date) {
+// 			str += ';expires=' + date.toUTCString();
+// 		}
+
+// 		// 路径
+// 		if (path) {
+// 			str += ';path=' + path;
+// 		}
+
+// 		document.cookie = str;
+// 	},
+
+// 	/**
+//   * [删除cookie]
+//   * @param  {String} key [cookie名]
+//   * @param {[String]} path     [cookie保存的路径]
+//   */
+// 	remove: function remove(key, path) {
+// 		var d = new Date();
+// 		d.setDate(d.getDate() - 1);
+
+// 		// document.cookie = key + '=x;expires=' + d.toUTCString();
+// 		this.set(key, 'x', d, path);
+// 	},
+
+// 	// 清空cookie
+// 	clear: function clear() {}
+// };
+
 var Cookie = {
 	/**
-  * [获取cookie]
-  * @param  {String} key [cookie名]
-  * @return {String}      [返回cookie自]
-  */
-	get: function get(key) {
-		// 先获取所有cookie
-		var cookies = document.cookie;
-		if (cookies.length === 0) {
-			return '';
-		}
+	 * [写入修改cookie]
+	 * @param {String} name   [cookie名]
+	 * @param {String} val    [cookie值]
+	 * @param {[Object]} params [cookie参数]
+	 	* expires {Date} 
+	 	* path    {String}
+	 	* domain  {String}
+	 	* secure  {Boolean}
+	 */
+	set:function(name,val,params){
+		// params={expires,path,domain,secure}
 
-		// 拆分每一个cookie
-		cookies = cookies.split('; ');
+		// cookie名与cookie值
+		var cookieStr = name +'=' + val;
 
-		for (var i = 0; i < cookies.length; i++) {
-			// 拆分key,value
-			var arr = cookies[i].split('=');
-
-			if (arr[0] === key) {
-				return arr[1];
-			}
-		}
-	},
-
-	/**
-  * [设置/修改cookie]
-  * @param {String} key   [cookie名]
-  * @param {String} value [cookie值]
-  * @param {[Date]} date  [有效期，必须为Date类型]
-  * @param {[String]} path  [cookie保存路径]
-  */
-	set: function set(key, value, date, path) {
-		var str = key + '=' + value;
+		params = params || {};
 
 		// 有效期
-		if (date) {
-			str += ';expires=' + date.toUTCString();
+		if(params.expires){
+			cookieStr += ';expires=' + params.expires.toUTCString();
 		}
 
 		// 路径
-		if (path) {
-			str += ';path=' + path;
+		if(params.path){
+			cookieStr += ';path=' + params.path;
 		}
 
-		document.cookie = str;
-	},
+		// 域名
+		if(params.domain){
+			cookieStr += ';domain=' + params.domain;
+		}
 
+
+		// 安全性
+		if(params.secure){
+			cookieStr += ';secure';
+		}
+
+
+		document.cookie = cookieStr;
+	},
 	/**
-  * [删除cookie]
-  * @param  {String} key [cookie名]
-  * @param {[String]} path     [cookie保存的路径]
-  */
-	remove: function remove(key, path) {
-		var d = new Date();
-		d.setDate(d.getDate() - 1);
+	 * [获取cookie]
+	 * @param  {String} name [description]
+	 * @return {[type]}      [description]
+	 */
+	get:function(name){
+		var cookies = document.cookie;
 
-		// document.cookie = key + '=x;expires=' + d.toUTCString();
-		this.set(key, 'x', d, path);
+		// 如果cookie不存在，直接返回空字符串
+		if(cookies.length===0){
+			return '';
+		}
+
+		var res = '';
+
+		cookies = cookies.split('; ');
+		for(var i=0;i<cookies.length;i++){
+			var arr = cookies[i].split('=');
+			if(arr[0] === name){
+				res = arr[1];
+				break;
+			}
+		}
+
+
+		return res;
 	},
+	/**
+	 * [删除cookie]
+	 * @param  {String} name [删除cookie]
+	 */
+	remove:function(name){
+		var now = new Date();
+		now.setDate(now.getDate()-10);
 
-	// 清空cookie
-	clear: function clear() {}
-};
+		// document.cookie = name + '=x;expires=' + now.toUTCString(); 
+		this.set(name,'x',{expires:now});
+	}
+}
 
 // Cookie.get('name');//laoxie
 // Cookie.set('username','lemon',date,path);//laoxie

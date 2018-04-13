@@ -161,17 +161,7 @@
   line-height: 24px;
 }
 
-#k_main .center .right .selectAttr .you li:first-of-type, #k_main .center .right .selectAttr .zuo li:first-of-type {
-  display: inline-block;
-  width: 55px;
-  height: 24px;
-  color: #fff;
-  text-align: center;
-  background-color: #90c31f;
-  border-radius: 3px;
-}
-
-#k_main .center .right .selectAttr .you li:nth-of-type(2), #k_main .center .right .selectAttr .you li:nth-of-type(4), #k_main .center .right .selectAttr .zuo li:nth-of-type(2), #k_main .center .right .selectAttr .zuo li:nth-of-type(4) {
+#k_main .center .right .selectAttr .you li:nth-of-type(1), #k_main .center .right .selectAttr .you li:nth-of-type(3), #k_main .center .right .selectAttr .zuo li:nth-of-type(1), #k_main .center .right .selectAttr .zuo li:nth-of-type(3) {
   width: 50px;
   text-align: center;
 }

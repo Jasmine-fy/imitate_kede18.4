@@ -467,6 +467,7 @@
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   position: relative;
+  float: left;
 }
 
 #k_main .main4 .tab li a {
@@ -574,6 +575,7 @@
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   position: relative;
+  float: left;
 }
 
 #k_main .main5 .tab li a {

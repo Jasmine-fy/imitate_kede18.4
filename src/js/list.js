@@ -63,6 +63,21 @@ require(['jquery','flexslider','common'],function($,a){
             scrollBy(0,-speed);
         },30)
     })
+    
+// -----------实现头部，右边购物车数据--------------------------
+  var more_data = Cookie.get('more_data') || [];
+    if(typeof more_data === 'string'){
+        more_data = JSON.parse(more_data);
+    };
+  Cookie.set("more_data",JSON.stringify(more_data),{path:"/"});
+
+  // 头部的商品数量
+  var $head_amount = $('#k_header .h_right .li4 span');
+  $head_amount.text(more_data.length);
+
+  // 右边购物车的商品数量
+  var $myCart = $('.k_right .li4 span');
+  $myCart.text(more_data.length)
 
 // ---------------生成数据--------------------------
     var $goods = $('#k_main .goods');// ul

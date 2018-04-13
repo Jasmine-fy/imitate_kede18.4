@@ -62,15 +62,15 @@
 
 #k_main ul.top li:nth-of-type(2) {
   width: 120px;
-  margin-left: 120px;
+  margin-left: 65px;
 }
 
 #k_main ul.top li:nth-of-type(3) {
-  width: 110px;
+  width: 130px;
 }
 
 #k_main ul.top li:nth-of-type(4) {
-  width: 110px;
+  width: 130px;
 }
 
 #k_main ul.top li:nth-of-type(5) {
@@ -104,6 +104,7 @@
   height: 80px;
   border: 1px solid #ccc;
   border-top: 0 none;
+  color: #666;
 }
 
 #k_main .goods li img {
@@ -119,6 +120,7 @@
   line-height: 58px;
   text-indent: 10px;
   margin-top: 10px;
+  color: #666;
 }
 
 #k_main .goods li .du {
@@ -128,7 +130,7 @@
 
 #k_main .goods li .amount {
   position: relative;
-  margin-top: 20px;
+  margin: 28px 55px 0 10px;
 }
 
 #k_main .goods li .amount input {
@@ -155,22 +157,15 @@
   cursor: pointer;
 }
 
-#k_main .goods li .qty input {
-  border: 1px solid #ccc;
-  width: 50px;
-  height: 18px;
-  color: #000;
-  text-align: center;
-  margin-top: 20px;
-}
-
 #k_main .goods li .unit {
   line-height: 80px;
-  margin-right: 20px;
+  margin-right: 85px;
 }
 
 #k_main .goods li .total {
+  line-height: 80px;
   color: #f60;
+  font-size: 14px;
 }
 
 #k_main .goods li .change {
@@ -183,6 +178,11 @@
 #k_main .goods li .change a {
   display: block;
   line-height: 20px;
+  color: #666;
+}
+
+#k_main .goods li .change a:hover {
+  color: #f60;
 }
 
 #k_main a.return {

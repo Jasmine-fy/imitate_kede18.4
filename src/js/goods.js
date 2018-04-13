@@ -109,8 +109,8 @@ require(['jquery','flexslider','common'],function($,a){
     var $input2 = $caculate2.find(':input');
 
     var qty = 1;
-    $input1.val(qty);console.log($input1)
-    $input2.val(qty);console.log($input2)
+    $input1.val(qty);
+    $input2.val(qty);
     $plus1.on('click',function(){
        $input1[0].value++;
     });
@@ -130,11 +130,72 @@ require(['jquery','flexslider','common'],function($,a){
        }
     });
 
+// -----------实现头部，右边购物车数据--------------------------
+  var more_data = Cookie.get('more_data') || [];
+    if(typeof more_data === 'string'){
+        more_data = JSON.parse(more_data);
+    };
+  Cookie.set("more_data",JSON.stringify(more_data),{path:"/"});
+
+  // 头部的商品数量
+  var $head_amount = $('#k_header .h_right .li4 span');
+  $head_amount.text(more_data.length);
+
+  // 右边购物车的商品数量
+  var $myCart = $('.k_right .li4 span');
+  $myCart.text(more_data.length)
+  
 // -----------添加到购物车--------------------------
   var $btnAdd = $('#k_main .btnAdd');
   $btnAdd.on('click',function(){
-      
+      // 动画
+      // 复制图片，增加路径，定位到按钮
+      var $cloneImg = $('<img/>');
+      $cloneImg.attr('src',`${res.imgurl}`);
+      $cloneImg.css({
+          'width':'60',
+          'height':'60',
+          'position':'absolute',
+          'left':this.offsetLeft,
+          'top':this.offsetTop
+      })
+      // 写入页面
+      // $('body').append($cloneImg);
+      // 动画实现改变定位，并回调函数
+      // $cloneImg.animate()
+
+      // 添加到购物车，存入cookie
+      res.qty = $input1.val();
+      console.log(res);
+      var more_data = Cookie.get('more_data') || [];
+      if(typeof more_data === 'string'){
+          more_data = JSON.parse(more_data);
+      };
+      var idx;
+      var has = more_data.some(function(g,i){
+          idx = i;
+          return g.id === id;
+      });
+      if(has){
+          more_data[idx].qty=(more_data[idx].qty)*1+$input1.val()*1;
+      }else{
+          more_data.push(res);
+      }
+      Cookie.set("more_data",JSON.stringify(more_data),{path:"/"});
+
+      // 头部的商品数量
+      var $head_amount = $('#k_header .h_right .li4 span');
+      $head_amount.text(more_data.length);
+
+      // 右边购物车的商品数量
+      var $myCart = $('.k_right .li4 span');
+      $myCart.text(more_data.length)
   });
+// --------------------去到购物车页面----------------
+  var $goBuy = $('.k_right .li4');
+  $goBuy.on('click',function(){
+      location.href = '../html/cart.html'
+  })
 
 // --------------立即购买--------------------------
   var $btnBuy = $('#k_main .btnBuy');
