@@ -4,11 +4,11 @@
 	tab标签页切换
 	回到顶部
 	购物车的数量cookie获取
-	ajax加载数据。。。
+	ajax加载数据。。
 
 -list.html（只实现美瞳数据）
 	点击商品进入详情页
-	ajax分页加载。。。
+	ajax分页加载
 	
 -goods.html
 	根据列表页传入id获取数据

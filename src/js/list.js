@@ -65,27 +65,28 @@ require(['jquery','flexslider','common'],function($,a){
     })
     
 // -----------实现头部，右边购物车数据------------------
-  var more_data = Cookie.get('more_data') || [];
+    var more_data = Cookie.get('more_data') || [];
     if(typeof more_data === 'string'){
         more_data = JSON.parse(more_data);
     };
-  Cookie.set("more_data",JSON.stringify(more_data),{path:"/"});
+    Cookie.set("more_data",JSON.stringify(more_data),{path:"/"});
 
-  // 头部的商品数量
-  var $head_amount = $('#k_header .h_right .li4 span');
-  $head_amount.text(more_data.length);
+    // 头部的商品数量
+    var $head_amount = $('#k_header .h_right .li4 span');
+    $head_amount.text(more_data.length);
 
-  // 右边购物车的商品数量
-  var $myCart = $('.k_right .li4 span');
-  $myCart.text(more_data.length)
+    // 右边购物车的商品数量
+    var $myCart = $('.k_right .li4 span');
+    $myCart.text(more_data.length)
 
 // ---------------生成数据--------------------------
     var $goods = $('#k_main .goods');// ul
 
-    var data = (function(){
+    var res = (function(){
         var accept;
         ajax({
-            url:"../api/link.php",
+            url:"../api/list.php",
+            // url:"../api/link.php",
             async:false,
             success:function(data){
                 accept = data;
@@ -93,7 +94,8 @@ require(['jquery','flexslider','common'],function($,a){
         });
         return accept;
     })();
-    var res = data.map(function(item){
+    console.log(res)
+    var result = res.data.map(function(item){
         if(item.type === '美瞳'){            
             return `<li class="clearfix" data-myid="${item.id}">
                 <img src="${item.imgurl}"/>
@@ -104,9 +106,21 @@ require(['jquery','flexslider','common'],function($,a){
             </li>`
         }        
     }).join('');
-    $goods.html(res);
+    // var result = data.map(function(item){
+    //     if(item.type === '美瞳'){            
+    //         return `<li class="clearfix" data-myid="${item.id}">
+    //             <img src="${item.imgurl}"/>
+    //             <h2 class="price">￥${item.price}</h2>
+    //             <h3 class="name">${item.name}</h3>
+    //             <p class="sale">全新升级，改善滑片，更易配戴。</p>
+    //             <p class="join clearfix"><span class="cart"><i></i>加入购物车</span><span class="collect"><i></i>收藏</span></p>
+    //         </li>`
+    //     }        
+    // }).join('');
+    $goods.html(result);
 
 // -------------------传出数据----------------------
+    // 点击进入详情页
     $goods.on('click','li',function(){
         var data_id = $(this).attr('data-myid');
         console.log(data_id);
@@ -116,7 +130,153 @@ require(['jquery','flexslider','common'],function($,a){
 // ----------------分页加载数据----------------------
     var $page = $('#k_main .page');
     var $prev = $page.find('.prev');
-    var $yema = $page.find('.yema');
-    var $next = $page.find('.next');
+    var $next = $page.find('.next');console.log($next)
+    var $yema = $page.find('.yema .yema_page');// li>ul
+
+    // 创建分页
+    var pageLen = Math.ceil(res.total/res.qty);
+    $yema.html('')
+    for(var i=0;i<pageLen;i++){
+        var $li = $('<li/>');
+        $li.text(i+1);
+
+        // 高亮分页
+        if(i === res.page-1){
+            $li.addClass('active');
+        }
+        $yema.append($li)
+    }
+    var qty = 12
+    // 点击页数切换
+    $yema.on('click','li',changePage)
+    // $yema.on('click','li',function(){
+    //     // 改变样式
+    //     $(this).addClass('active');
+    //     $(this).siblings().removeClass('active');
+    //     // 获取当前页码
+    //     var pageNo = $(this).text();console.log(pageNo);
+
+    //     // 请求得到数据，再次生成页面
+    //     var accept;
+    //     ajax({
+    //         url:"../api/list.php",
+    //         data:{qty:qty,page:pageNo},
+    //         async:false,
+    //         success:function(msg){console.log(msg)
+    //             accept = msg.data.map(function(item){
+    //                 if(item.type === '美瞳'){            
+    //                     return `<li class="clearfix" data-myid="${item.id}">
+    //                         <img src="${item.imgurl}"/>
+    //                         <h2 class="price">￥${item.price}</h2>
+    //                         <h3 class="name">${item.name}</h3>
+    //                         <p class="sale">全新升级，改善滑片，更易配戴。</p>
+    //                         <p class="join clearfix"><span class="cart"><i></i>加入购物车</span><span class="collect"><i></i>收藏</span></p>
+    //                     </li>`
+    //                 }        
+    //             }).join('');
+    //         }
+    //     });
+    //     $goods.html(accept);
+    // })
+    // 点击前一页切换
+    $prev.on('click',function(){
+        var $current = $(this).siblings('.yema').find('.yema_page');
+        var $li = $current.find('li.active');
+        // 获取当前页码
+        var num = $current.find('li.active')[0].innerText*1;
+        if(num != 1){
+            // 改变样式
+            $li.removeClass('active')
+            $li.prev().addClass('active');
+
+            // 请求得到数据，再次生成页面
+            var accept;
+            ajax({
+                url:"../api/list.php",
+                data:{qty:qty,page:num-1},
+                async:false,
+                success:function(msg){console.log(msg)
+                    accept = msg.data.map(function(item){
+                        if(item.type === '美瞳'){            
+                            return `<li class="clearfix" data-myid="${item.id}">
+                                <img src="${item.imgurl}"/>
+                                <h2 class="price">￥${item.price}</h2>
+                                <h3 class="name">${item.name}</h3>
+                                <p class="sale">全新升级，改善滑片，更易配戴。</p>
+                                <p class="join clearfix"><span class="cart"><i></i>加入购物车</span><span class="collect"><i></i>收藏</span></p>
+                            </li>`
+                        }        
+                    }).join('');
+                }
+            });
+            $goods.html(accept);
+        }
+        
+    })
+    // 点击下一页切换
+    $next.on('click',function(){
+        var $current = $(this).siblings('.yema').find('.yema_page');
+        var $li = $current.find('li.active');
+        // 获取当前页码
+        var num = $current.find('li.active')[0].innerText*1;console.log(num);console.log($current.length)
+        if(num != $current.children().length){
+            // 改变样式
+            $li.removeClass('active')
+            $li.next().addClass('active');
+
+            // 请求得到数据，再次生成页面
+            var accept;
+            ajax({
+                url:"../api/list.php",
+                data:{qty:qty,page:num+1},
+                async:false,
+                success:function(msg){console.log(msg)
+                    accept = msg.data.map(function(item){
+                        if(item.type === '美瞳'){            
+                            return `<li class="clearfix" data-myid="${item.id}">
+                                <img src="${item.imgurl}"/>
+                                <h2 class="price">￥${item.price}</h2>
+                                <h3 class="name">${item.name}</h3>
+                                <p class="sale">全新升级，改善滑片，更易配戴。</p>
+                                <p class="join clearfix"><span class="cart"><i></i>加入购物车</span><span class="collect"><i></i>收藏</span></p>
+                            </li>`
+                        }        
+                    }).join('');
+                }
+            });
+            $goods.html(accept);
+        }
+    });
+
+    // 封装切换页码，获取数据
+    function changePage(){
+        // 改变样式
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+        // 获取当前页码
+        var pageNo = $(this).text();console.log(pageNo);
+
+        // 请求得到数据，再次生成页面
+        var accept;
+        ajax({
+            url:"../api/list.php",
+            data:{qty:qty,page:pageNo},
+            async:false,
+            success:function(msg){console.log(msg)
+                accept = msg.data.map(function(item){
+                    if(item.type === '美瞳'){            
+                        return `<li class="clearfix" data-myid="${item.id}">
+                            <img src="${item.imgurl}"/>
+                            <h2 class="price">￥${item.price}</h2>
+                            <h3 class="name">${item.name}</h3>
+                            <p class="sale">全新升级，改善滑片，更易配戴。</p>
+                            <p class="join clearfix"><span class="cart"><i></i>加入购物车</span><span class="collect"><i></i>收藏</span></p>
+                        </li>`
+                    }        
+                }).join('');
+            }
+        });
+        $goods.html(accept);
+    }
 });
 });
