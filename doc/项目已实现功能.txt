@@ -1,0 +1,29 @@
+-index.html
+	三级菜单
+	轮播图
+	tab标签页切换
+	回到顶部
+	购物车的数量cookie获取
+	ajax加载数据。。。
+
+-list.html（只实现美瞳数据）
+	点击商品进入详情页
+	ajax分页加载。。。
+	
+-goods.html
+	根据列表页传入id获取数据
+	放大镜
+	加入购物车改变数量和动画
+
+-cart.html
+	cookie读取
+	价格计算（当数量为0或点击删除按钮实现删除商品）
+
+-reg.html
+	验证手机号是否已注册（手机验证码未实现）
+	获取用户名，跳转至index.html
+
+-login.html
+	验证手机号和密码是否正确
+	获取用户名，跳转至index.html
+

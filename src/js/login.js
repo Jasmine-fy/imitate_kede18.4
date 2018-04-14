@@ -63,7 +63,7 @@ require(['jquery','flexslider','common'],function($,a){
                         success:function(msg){
                             console.log(msg)
                             console.log(msg[0].phoneNum);
-                            location.href="../index.html"
+                            location.href="../index.html?user="+msg[0].phoneNum.slice(0,6);
                         }
                     })
                 }

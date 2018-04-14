@@ -59,19 +59,19 @@ require(['jquery','flexslider','common'],function($,a){
     })
 
 // -----------实现头部，右边购物车数据--------------------------
-  var more_data = Cookie.get('more_data') || [];
+    var more_data = Cookie.get('more_data') || [];
     if(typeof more_data === 'string'){
         more_data = JSON.parse(more_data);
     };
-  Cookie.set("more_data",JSON.stringify(more_data),{path:"/"});
+    Cookie.set("more_data",JSON.stringify(more_data),{path:"/"});
 
-  // 头部的商品数量
-  var $head_amount = $('#k_header .h_right .li4 span');
-  $head_amount.text(more_data.length);
+    // 头部的商品数量
+    var $head_amount = $('#k_header .h_right .li4 span');
+    $head_amount.text(more_data.length);
 
-  // 右边购物车的商品数量
-  var $myCart = $('.k_right .li4 span');
-  $myCart.text(more_data.length)
+    // 右边购物车的商品数量
+    var $myCart = $('.k_right .li4 span');
+    $myCart.text(more_data.length)
   
 // -------------轮播图-------------------------------
     // 轮播图滚动
@@ -163,6 +163,7 @@ require(['jquery','flexslider','common'],function($,a){
 
 // ----------------主要内容-------------------------
     var $k_main = $('#k_main');
+    // 实现轮播图
     $k_main.find('.ml_banner').flexslider({
         directionNav: true,
         pauseOnAction: false
@@ -261,21 +262,25 @@ require(['jquery','flexslider','common'],function($,a){
         $ks_guide_msg.css('display','block');
     });
 
-// ------------------登录更改用户名------------------
+// ---------------登录或注册更改用户名------------------
     var $loginName = $('#k_header .loginName');
-    console.log($loginName.val());
-    ajax({
-        url:'../api/requestSQL.php',
-        //data:{phoneNum:}
-        success:function(data){
-            console.log(data)
-            $loginName.text(`${data[0]}...您好，欢迎来可得！`);
-            $loginName.css({'color':'#f60'});
-            // $loginName.text(`${$_phone.slice(0,6)}...您好，欢迎来可得！`);
-            $loginName.next('a').text(' ');
-            $loginName.next('a').next('a').text('[退出]');
-        }
-    })
+    // ajax({
+    //     url:'../api/requestSQL.php',
+    //     //data:{phoneNum:}
+    //     success:function(data){
+    //         console.log(data)
+    //         $loginName.text(`${data[0]}...您好，欢迎来可得！`);
+    //         $loginName.css({'color':'#f60'});
+    //         // $loginName.text(`${$_phone.slice(0,6)}...您好，欢迎来可得！`);
+    //         $loginName.next('a').text(' ');
+    //         $loginName.next('a').next('a').text('[退出]');
+    //     }
+    // })
+    if(location.search.length > 0){
+        var user = location.search.substr(6);
+        console.log(location.search)
+        $loginName.text(`${user}...您好，欢迎来可得！`).css('color','#f60')
+    }
     
 });
 });

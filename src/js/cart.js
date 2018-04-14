@@ -48,7 +48,7 @@ require(['jquery','flexslider','common'],function($,a){
         he += Number($($goods.find('li')[i]).find('.total').text().slice(1));
     }
     $z_price.text(`￥${he}`);
-    $z_total.text($z_price.text().slice(1)-76);
+    $z_total.text($z_price.text().slice(1));
 
 // ------------计算价格，并存入cookie------------------
     var $currentP,$total,$unit,$input,$qty,
@@ -73,7 +73,7 @@ require(['jquery','flexslider','common'],function($,a){
             he += Number($($goods.find('li')[i]).find('.total').text().slice(1));
         }
         $z_price.text(`￥${he}`);
-        $z_total.text($z_price.text().slice(1)-76);
+        $z_total.text($z_price.text().slice(1));
 
         // 存入cookie
         // 获取当前li的id
@@ -103,6 +103,7 @@ require(['jquery','flexslider','common'],function($,a){
         if($input[0].value <= 0){
             $currentLi = $(this).closest('li');
             $currentLi.remove();
+            
             // 存入cookie
             $myid = $currentLi.attr('data-id');
             console.log($myid);
@@ -112,9 +113,16 @@ require(['jquery','flexslider','common'],function($,a){
                 // 若id相等则改变其的qty值
                 if(more_data[i].id == $myid){
                     more_data.splice(i,1);
+
+                    // 头部的商品数量变化
+                    var $head_amount = $('#k_header .h_right .li4 span');
+                    $head_amount.text(more_data.length);
+
+                    // 重新写入cookie
                     Cookie.set("more_data",JSON.stringify(more_data),{path:"/"});
                 }
             }
+
         }
 
         $total.text(`￥${$input.val()*$unit.text().slice(1)}`);
@@ -129,7 +137,12 @@ require(['jquery','flexslider','common'],function($,a){
             he += Number($($goods.find('li')[i]).find('.total').text().slice(1));
         }
         $z_price.text(`￥${he}`);
-        $z_total.text($z_price.text().slice(1)-76);
+        $z_total.text($z_price.text().slice(1));
+
+        // 如果没有商品，即价格为0，则总价为0
+        // if($z_price.text().slice(1) <= 0){console.log(000)
+        //     $z_total.text($z_price.text().slice(1));
+        // }
 
         // 存入cookie
         // 获取当前li的id
@@ -163,6 +176,17 @@ require(['jquery','flexslider','common'],function($,a){
                 Cookie.set("more_data",JSON.stringify(more_data),{path:"/"});
             }
         }
+
+        // 总价变化
+        $amount.text(more_data.length);
+        var $all = $goods.find('li').get();
+        var he = 0;
+        for(var i=0;i<$all.length;i++){
+            he += Number($($goods.find('li')[i]).find('.total').text().slice(1));
+        }
+        $z_price.text(`￥${he}`);
+        $z_total.text($z_price.text().slice(1));
+        
     })
 
 });

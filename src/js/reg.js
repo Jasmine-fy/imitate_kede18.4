@@ -85,8 +85,8 @@ require(['jquery','flexslider','common'],function($,a){
                 type:'reg'
             },
             success:function(data){
-                if(data === 'success'){
-                    location.href = '../index.html';                   
+                if(data === 'success'){console.log($_phone)
+                    location.href = '../index.html?user='+$_phone.slice(0,6);                   
                 }
             }
         })

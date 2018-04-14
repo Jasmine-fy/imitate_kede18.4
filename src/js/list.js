@@ -64,7 +64,7 @@ require(['jquery','flexslider','common'],function($,a){
         },30)
     })
     
-// -----------实现头部，右边购物车数据--------------------------
+// -----------实现头部，右边购物车数据------------------
   var more_data = Cookie.get('more_data') || [];
     if(typeof more_data === 'string'){
         more_data = JSON.parse(more_data);
@@ -112,5 +112,11 @@ require(['jquery','flexslider','common'],function($,a){
         console.log(data_id);
         location.href = '../html/goods.html?id='+data_id;
     })
+
+// ----------------分页加载数据----------------------
+    var $page = $('#k_main .page');
+    var $prev = $page.find('.prev');
+    var $yema = $page.find('.yema');
+    var $next = $page.find('.next');
 });
 });

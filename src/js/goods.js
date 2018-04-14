@@ -155,14 +155,21 @@ require(['jquery','flexslider','common'],function($,a){
       $cloneImg.css({
           'width':'60',
           'height':'60',
+          'border':'1px solid #ccc',
           'position':'absolute',
-          'left':this.offsetLeft,
-          'top':this.offsetTop
+          'z-index':'1000',
+          'left':this.offsetLeft+127,// 673->800
+          'top':this.offsetTop+208// 392->600
       })
       // 写入页面
-      // $('body').append($cloneImg);
+      $('#k_main .container').append($cloneImg);
+      var $myCar = $('.k_right .li4')
       // 动画实现改变定位，并回调函数
-      // $cloneImg.animate()
+      $cloneImg.animate({'left':$myCar.offset().left-20,'top':$myCar.offset().top-80},1000,function(){
+        $cloneImg.animate({'top':$myCar.offset().top,'opacity':'0'},500,function(){
+          $cloneImg.remove()          
+        })
+      })
 
       // 添加到购物车，存入cookie
       res.qty = $input1.val();
