@@ -114,5 +114,10 @@ require(['jquery','flexslider','common'],function($,a){
     //     xhr.open('get','../api/zhuce.php?phoneNum='+$_phone,true);
     //     xhr.send();
     // })
+
+//-------------点击logo，跳转首页----------------------
+    $('.logo').on('click',function(){console.log(666)
+        location.href = '../index.html';
+    });
 });
 });

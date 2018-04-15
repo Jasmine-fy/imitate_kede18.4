@@ -277,6 +277,31 @@ require(['jquery','flexslider','common'],function($,a){
             }
         });
         $goods.html(accept);
-    }
+    };
+
+// -----------列表左边手风琴效果----------------------
+    var $accordion = $('#k_main .left .accordion');
+    // 点击列表，实现手风琴效果
+    $accordion.on('click','>li',function(){
+        console.log($(this).next('.cont')[0])
+        console.log($(this).css('color'))
+        if($(this).css('color') == 'rgb(109, 157, 3)'){
+            $(this).css({'color':'#f60'});
+            $(this).siblings('li').css('color','#6d9d03')
+            $(this).find('i').css('background-position','-7px -796px');
+            $(this).prev('.cont').slideUp();
+            $(this).next('.cont').slideDown();            
+        }
+        else if($(this).css('color') == 'rgb(255, 102, 0)'){
+            $(this).find('i').css('background-position','-7px -766px');
+            $(this).css({'color':'#6d9d03'})
+            $(this).next('.cont').slideUp();
+        }
+    })
+
+//-------------点击logo，跳转首页----------------------
+    $('.logo').on('click',function(){console.log(666)
+        location.href = '../index.html';
+    });
 });
 });

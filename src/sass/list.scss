@@ -13,10 +13,51 @@
     }
     .left{
         width: 210px;
-        height: 2610px;
-        background:url("../img/list_left.png");
+        // height: 2610px;
         float: $fl;
         margin-right:20px;
+        ul.accordion{
+            width: 208px;
+            border-left:1px solid #eee;
+            border-right:1px solid #eee;
+            border-top:3px solid #90c31f;
+            // overflow:hidden;
+            .li1,.li2,.li3,.li4,.li5,.li6,.li7,.li8{
+                height: 30px;
+                line-height:30px;
+                border-bottom:1px solid #d9d9d9;
+                background-color:#f5f5f5;
+                color:#6d9d03;
+                font-size:14px;
+                padding-left:25px;
+                position:relative;
+                i{
+                    width: 12px;
+                    height: 12px;
+                    background-position:-7px -766px;
+                    left:7px;
+                    top:9px;
+                }
+            }
+            .li1:hover,.li2:hover,.li3:hover,.li4:hover,.li5:hover,.li6:hover,.li7:hover,.li8:hover{cursor:pointer;}
+        }
+        ul.cont{
+            display:none;
+            padding:5px 0 5px 25px;
+            z-index:1;
+            li{
+                height: 26px;
+                line-height:26px;
+                color:#666;
+            }
+            li:hover{color:#f60;}
+        }
+        .popular{
+            width: 210px;
+            height: 725px;
+            margin-top:20px;
+            background:url("../img/list_left.png");            
+        }
     }
     .right{
         width: 960px;

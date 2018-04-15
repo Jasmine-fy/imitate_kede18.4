@@ -281,6 +281,14 @@ require(['jquery','flexslider','common'],function($,a){
         console.log(location.search)
         $loginName.text(`${user}...您好，欢迎来可得！`).css('color','#f60')
     }
-    
+//-------------点击logo，跳转首页----------------------
+    $('.logo').on('click',function(){
+        loaction.href = '../index.html';
+    });
+//-------------点击二级菜单，跳转列表页---------------------
+    $('#k_nav .tab1 .li2').on('click',function(){
+        location.href = '../html/list.html';
+        $(this).css('cursor','pointer');
+    });
 });
 });
